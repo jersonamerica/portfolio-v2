@@ -56,9 +56,8 @@ export default function ProfileSection() {
               Jerson America
             </h2>
             <p className="text-xl text-gray-300 mb-8">
-              Full-stack developer with a passion for creating elegant and
-              efficient solutions. Specializing in modern web technologies and
-              cloud-based applications.
+              Frontend developer with a passion for creating <s>beautiful</s>{" "}
+              average user interfaces.
             </p>
             <div className="flex gap-4">
               <button

@@ -9,11 +9,13 @@ export default function Footer() {
           <a href="#" className="text-gray-400 hover:text-red-900 transition">
             LinkedIn
           </a>
-          <a href="#" className="text-gray-400 hover:text-red-900 transition">
+          <a
+            href="https://github.com/jersonamerica"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-400 hover:text-red-900 transition"
+          >
             GitHub
-          </a>
-          <a href="#" className="text-gray-400 hover:text-red-900 transition">
-            Twitter
           </a>
         </div>
       </div>

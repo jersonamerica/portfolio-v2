@@ -17,13 +17,15 @@ export default function SkillsSection() {
         "Powerscript",
         "TailwindCSS",
       ],
+      badgeColor: "bg-blue-50 text-blue-900",
     },
     {
       title: "Backend",
       skills: ["Node.js", "Express", "C#", "MySQL", "MSSQL", "DB2", "MongoDB"],
+      badgeColor: "bg-green-50 text-green-900",
     },
     {
-      title: "Tools & Libraries",
+      title: "Tools & Others",
       skills: [
         "Git & GitHub",
         "Webpack",
@@ -39,6 +41,7 @@ export default function SkillsSection() {
         "Unity",
         "Blender",
       ],
+      badgeColor: "bg-purple-50 text-purple-900",
     },
   ];
 
@@ -75,7 +78,7 @@ export default function SkillsSection() {
                 {category.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="bg-red-50 text-red-900 px-4 py-2 rounded-full text-sm font-medium hover:bg-red-900 hover:text-white transition-colors duration-200"
+                    className={`${category.badgeColor} px-4 py-2 rounded-full text-sm font-medium`}
                   >
                     {skill}
                   </span>
