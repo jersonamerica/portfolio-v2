@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 export default function ProfileSection() {
   const [showContactForm, setShowContactForm] = useState(false);
@@ -146,8 +147,14 @@ export default function ProfileSection() {
             )}
           </div>
           <div className="flex-1 flex justify-center">
-            <div className="w-48 h-48 bg-red-900 rounded-full flex items-center justify-center">
-              <span className="text-4xl font-bold text-white">JA</span>
+            <div className="w-48 h-48 rounded-full flex items-center justify-center overflow-hidden border-4 border-red-900">
+              <Image
+                src="/jers.jpg"
+                alt="Jerson America"
+                width={192}
+                height={192}
+                className="object-cover w-full h-full"
+              />
             </div>
           </div>
         </div>

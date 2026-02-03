@@ -1,28 +1,35 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useState } from "react";
+import Image from "next/image";
 
 const projects = [
   {
-    title: 'E-Commerce Platform',
+    title: "Cryptojers",
     description:
-      'A full-stack e-commerce solution built with React, Node.js, and MongoDB. Features include user authentication, product catalog, shopping cart, and payment integration.',
-    tags: ['React', 'Node.js', 'MongoDB'],
-    gradient: 'from-black to-red-900',
+      "A comprehensive cryptocurrency tracking platform featuring a complete list of cryptocurrencies with detailed information for each asset. Access real-time news updates, monitor price changes with interactive graphs that track performance over time, and stay informed about market trends.",
+    tags: ["React", "Redux", "Node.js", "Ant Design"],
+    gradient: "from-black to-red-900",
+    url: "https://cryptojers.netlify.app/",
+    image: "/cryptojers.PNG",
   },
   {
-    title: 'Task Management App',
+    title: "CMS Blog Platform",
     description:
-      'A collaborative task management application with real-time updates, team collaboration features, and automated notifications. Built with modern web technologies.',
-    tags: ['Next.js', 'TypeScript', 'Firebase'],
-    gradient: 'from-red-900 to-black',
+      "A powerful content management system for blogging that allows users to create, edit, and publish articles. Features include rich text editing, article categorization, tag management, and a clean interface for managing your blog content. Perfect for bloggers and content creators who want a modern platform to share their stories.",
+    tags: ["React", "TypeScript", "NextJS", "TailwindCSS", "GraphQL"],
+    gradient: "from-red-900 to-black",
+    url: "https://cmsblog.vercel.app/",
+    image: "/graphcms.PNG",
   },
   {
-    title: 'AI Content Generator',
+    title: "Covid19 Tracker",
     description:
-      'An intelligent content generation tool powered by machine learning. Helps users create high-quality articles, social media posts, and marketing copy with customizable tone and style.',
-    tags: ['Python', 'TensorFlow', 'React'],
-    gradient: 'from-black via-red-900 to-black',
+      "A real-time tracking application for monitoring global and local COVID-19 statistics. Features include up-to-date case numbers, recoveries, and fatalities presented in an easy-to-understand format. Interactive charts and maps help visualize the spread of the virus, making it a valuable tool for staying informed during the pandemic.",
+    tags: ["React", "Redux", "Typescript", "Material UI"],
+    gradient: "from-black via-red-900 to-black",
+    url: "https://covid19-tracker-delta.vercel.app/",
+    image: "/covid19tracker.PNG",
   },
 ];
 
@@ -35,7 +42,7 @@ export default function ProjectsSection() {
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? projects.length - 1 : prevIndex - 1
+      prevIndex === 0 ? projects.length - 1 : prevIndex - 1,
     );
   };
 
@@ -44,7 +51,7 @@ export default function ProjectsSection() {
       <div className="max-w-6xl mx-auto px-6">
         <h2
           className="text-4xl font-bold text-black mb-12 text-center"
-          style={{ fontFamily: 'var(--font-orbitron)' }}
+          style={{ fontFamily: "var(--font-orbitron)" }}
         >
           Projects
         </h2>
@@ -52,44 +59,62 @@ export default function ProjectsSection() {
         <div className="relative">
           {/* Slider Container */}
           <div className="overflow-hidden">
-            <div className="flex transition-transform duration-500 ease-out" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+            <div
+              className="flex transition-transform duration-500 ease-out"
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
               {projects.map((project, index) => (
-                <div
-                  key={index}
-                  className="w-full flex-shrink-0 px-4"
-                >
+                <div key={index} className="w-full flex-shrink-0 px-4">
                   <div
                     className={`${
-                      index === currentIndex ? 'scale-100' : 'scale-90'
+                      index === currentIndex ? "scale-100" : "scale-90"
                     } bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-transform duration-300`}
                     style={{
-                      transformOrigin: 'center',
+                      transformOrigin: "center",
                     }}
                   >
-                    <div className={`h-48 bg-gradient-to-r ${project.gradient}`}></div>
+                    <div className="h-64 bg-gradient-to-r from-black to-red-900 relative overflow-hidden shadow-lg">
+                      {project.image ? (
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          className="object-cover"
+                        />
+                      ) : (
+                        <div
+                          className={`w-full h-full bg-gradient-to-r ${project.gradient}`}
+                        ></div>
+                      )}
+                    </div>
                     <div className="p-6">
                       <h3
-                        className="text-2xl font-bold text-black mb-3"
-                        style={{ fontFamily: 'var(--font-orbitron)' }}
+                        className="text-2xl font-bold text-red-900 mb-3"
+                        style={{ fontFamily: "var(--font-orbitron)" }}
                       >
                         {project.title}
                       </h3>
-                      <p className="text-gray-700 mb-4">{project.description}</p>
+                      <p className="text-gray-700 mb-4">
+                        {project.description}
+                      </p>
                       <div className="flex gap-2 mb-4 flex-wrap">
                         {project.tags.map((tag, tagIndex) => (
                           <span
                             key={tagIndex}
                             className={`${
                               tagIndex === project.tags.length - 1
-                                ? 'bg-red-900 text-white'
-                                : 'bg-black text-white'
+                                ? "bg-red-900 text-white"
+                                : "bg-black text-white"
                             } px-3 py-1 rounded-full text-sm`}
                           >
                             {tag}
                           </span>
                         ))}
                       </div>
-                      <button className="text-red-900 font-semibold hover:text-red-800 transition">
+                      <button
+                        onClick={() => window.open(project.url, "_blank")}
+                        className="text-red-900 font-semibold hover:text-red-800 transition cursor-pointer"
+                      >
                         View Project →
                       </button>
                     </div>
@@ -120,7 +145,7 @@ export default function ProjectsSection() {
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 className={`w-3 h-3 rounded-full transition cursor-pointer ${
-                  index === currentIndex ? 'bg-red-900' : 'bg-gray-300'
+                  index === currentIndex ? "bg-red-900" : "bg-gray-300"
                 }`}
               />
             ))}

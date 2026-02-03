@@ -1,4 +1,42 @@
 export default function ExperienceSection() {
+  const experiences = [
+    {
+      company: "Extreme Unreal Technology Inc.",
+      position: "Game Developer",
+      period: "Jul 2023 - Jan 2025",
+    },
+    {
+      company: "GetDevs",
+      position: "Sr React JS Developer",
+      period: "Jan 2022 - Aug 2023",
+    },
+    {
+      company: "Swapoolabs",
+      position: "Front End Developer",
+      period: "Nov 2018 - Nov 2021",
+    },
+    {
+      company: "Diversify OSS",
+      position: "Front End Developer",
+      period: "Jun 2018 - Sep 2018",
+    },
+    {
+      company: "Idigital Enterprise Inc",
+      position: "Front End Developer",
+      period: "Feb 2017 - Feb 2018",
+    },
+    {
+      company: "Dottystyle Creative",
+      position: "Front End Developer",
+      period: "Feb 2016 - Sep 2016",
+    },
+    {
+      company: "Gestalt Consulting Inc",
+      position: "System Developer",
+      period: "Aug 2015 - Jan 2016",
+    },
+  ];
+
   return (
     <section id="experience" className="py-20 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
@@ -8,66 +46,28 @@ export default function ExperienceSection() {
         >
           Experiences
         </h2>
-        <div className="space-y-8">
-          <div className="bg-white p-8 rounded-lg shadow-md border-l-4 border-black">
-            <div className="flex justify-between items-start mb-4">
-              <div>
-                <h3
-                  className="text-2xl font-bold text-black"
-                  style={{ fontFamily: "var(--font-orbitron)" }}
-                >
-                  Senior Developer
-                </h3>
-                <p className="text-red-900 font-semibold">Tech Company Inc.</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {experiences.map((exp, index) => (
+            <div
+              key={index}
+              className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 border-l-4 border-red-900"
+            >
+              <div className="flex justify-between items-start mb-2">
+                <div>
+                  <h3
+                    className="text-2xl font-bold text-black"
+                    style={{ fontFamily: "var(--font-orbitron)" }}
+                  >
+                    {exp.position}
+                  </h3>
+                  <p className="text-red-900 font-semibold">{exp.company}</p>
+                </div>
+                <span className="text-gray-600 whitespace-nowrap ml-4">
+                  {exp.period}
+                </span>
               </div>
-              <span className="text-gray-600">2021 - Present</span>
             </div>
-            <p className="text-gray-700">
-              Led development of full-stack applications, managed team of 5
-              developers, and implemented CI/CD pipelines for improved
-              deployment efficiency.
-            </p>
-          </div>
-          <div className="bg-white p-8 rounded-lg shadow-md border-l-4 border-black">
-            <div className="flex justify-between items-start mb-4">
-              <div>
-                <h3
-                  className="text-2xl font-bold text-black"
-                  style={{ fontFamily: "var(--font-orbitron)" }}
-                >
-                  Full Stack Developer
-                </h3>
-                <p className="text-red-900 font-semibold">
-                  Digital Solutions Co.
-                </p>
-              </div>
-              <span className="text-gray-600">2019 - 2021</span>
-            </div>
-            <p className="text-gray-700">
-              Developed and maintained multiple web applications using React and
-              Node.js. Collaborated with UX team to implement responsive designs
-              and improve user experience.
-            </p>
-          </div>
-          <div className="bg-white p-8 rounded-lg shadow-md border-l-4 border-black">
-            <div className="flex justify-between items-start mb-4">
-              <div>
-                <h3
-                  className="text-2xl font-bold text-black"
-                  style={{ fontFamily: "var(--font-orbitron)" }}
-                >
-                  Junior Developer
-                </h3>
-                <p className="text-red-900 font-semibold">StartUp Ventures</p>
-              </div>
-              <span className="text-gray-600">2018 - 2019</span>
-            </div>
-            <p className="text-gray-700">
-              Started career as a junior developer working on frontend
-              components and learning best practices in web development and
-              agile methodologies.
-            </p>
-          </div>
+          ))}
         </div>
       </div>
     </section>
