@@ -23,6 +23,22 @@ const projects = [
     image: "/graphcms.PNG",
   },
   {
+    title: "OPEN AI Chat App",
+    description:
+      "An AI-powered chat application that leverages OpenAI's language model to provide intelligent and context-aware responses. Users can engage in natural language conversations, ask questions, and receive informative answers in real-time.",
+    tags: [
+      "React",
+      "TypeScript",
+      "NextJS",
+      "Zustand",
+      "TailwindCSS",
+      "OpenAI API",
+    ],
+    gradient: "from-red-900 to-black",
+    url: "https://open-ai-chat-app-dun.vercel.app/",
+    image: "/OpenAI.PNG",
+  },
+  {
     title: "Covid19 Tracker",
     description:
       "A real-time tracking application for monitoring global and local COVID-19 statistics. Features include up-to-date case numbers, recoveries, and fatalities presented in an easy-to-understand format. Interactive charts and maps help visualize the spread of the virus, making it a valuable tool for staying informed during the pandemic.",

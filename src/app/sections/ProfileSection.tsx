@@ -23,7 +23,6 @@ export default function ProfileSection() {
 
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Contact form submitted:", formData);
     alert(
       `Thank you ${formData.name}! Your message has been received.\nEmail: ${formData.email}\nMessage: ${formData.message}`,
     );
@@ -56,8 +55,8 @@ export default function ProfileSection() {
               Jerson America
             </h2>
             <p className="text-xl text-gray-300 mb-8">
-              Frontend developer with a passion for creating <s>beautiful</s>{" "}
-              average user interfaces.
+              Frontend developer focused on clean code and user-centric web
+              experiences.
             </p>
             <div className="flex gap-4">
               <button
