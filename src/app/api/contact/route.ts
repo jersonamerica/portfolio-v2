@@ -1,8 +1,6 @@
 import { Resend } from "resend";
 import { NextRequest, NextResponse } from "next/server";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 interface ContactFormData {
   name: string;
   email: string;
@@ -13,6 +11,11 @@ export async function POST(request: NextRequest) {
   try {
     const body: ContactFormData = await request.json();
     const { name, email, message } = body;
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      return new Response("Server configuration error", { status: 500 });
+    }
+    const resend = new Resend(apiKey);
 
     // Validate inputs
     if (!name || !email || !message) {
