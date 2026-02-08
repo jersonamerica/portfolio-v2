@@ -6,6 +6,11 @@ import { useAnimateOnView } from "@/hooks/useAnimateOnView";
 
 export default function ProfileSection() {
   const [showContactForm, setShowContactForm] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -22,13 +27,47 @@ export default function ProfileSection() {
     document.body.removeChild(link);
   };
 
-  const handleContactSubmit = (e: React.FormEvent) => {
+  const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert(
-      `Thank you ${formData.name}! Your message has been received.\nEmail: ${formData.email}\nMessage: ${formData.message}`,
-    );
-    setFormData({ name: "", email: "", message: "" });
-    setShowContactForm(false);
+    setIsLoading(true);
+    setSubmitStatus({ type: null, message: "" });
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: "success",
+          message: "Thank you! Your message has been sent successfully. I'll get back to you soon!",
+        });
+        setFormData({ name: "", email: "", message: "" });
+        setTimeout(() => {
+          setShowContactForm(false);
+          setSubmitStatus({ type: null, message: "" });
+        }, 3000);
+      } else {
+        setSubmitStatus({
+          type: "error",
+          message: data.error || "Failed to send message. Please try again.",
+        });
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setSubmitStatus({
+        type: "error",
+        message: "An error occurred. Please try again later.",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleInputChange = (
@@ -86,6 +125,19 @@ export default function ProfileSection() {
                 >
                   Get In Touch
                 </h3>
+
+                {submitStatus.type === "success" && (
+                  <div className="mb-4 p-4 bg-green-900 border border-green-700 text-green-100 rounded-lg">
+                    ✓ {submitStatus.message}
+                  </div>
+                )}
+
+                {submitStatus.type === "error" && (
+                  <div className="mb-4 p-4 bg-red-900 border border-red-700 text-red-100 rounded-lg">
+                    ✕ {submitStatus.message}
+                  </div>
+                )}
+
                 <form onSubmit={handleContactSubmit} className="space-y-4">
                   <div>
                     <label className="block text-sm font-semibold mb-2">
@@ -97,7 +149,8 @@ export default function ProfileSection() {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-2 rounded bg-gray-800 text-white border border-gray-700 focus:border-red-900 focus:outline-none"
+                      disabled={isLoading}
+                      className="w-full px-4 py-2 rounded bg-gray-800 text-white border border-gray-700 focus:border-red-900 focus:outline-none disabled:opacity-50"
                       placeholder="Your name"
                     />
                   </div>
@@ -111,7 +164,8 @@ export default function ProfileSection() {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-2 rounded bg-gray-800 text-white border border-gray-700 focus:border-red-900 focus:outline-none"
+                      disabled={isLoading}
+                      className="w-full px-4 py-2 rounded bg-gray-800 text-white border border-gray-700 focus:border-red-900 focus:outline-none disabled:opacity-50"
                       placeholder="your.email@example.com"
                     />
                   </div>
@@ -124,22 +178,25 @@ export default function ProfileSection() {
                       value={formData.message}
                       onChange={handleInputChange}
                       required
+                      disabled={isLoading}
                       rows={4}
-                      className="w-full px-4 py-2 rounded bg-gray-800 text-white border border-gray-700 focus:border-red-900 focus:outline-none"
+                      className="w-full px-4 py-2 rounded bg-gray-800 text-white border border-gray-700 focus:border-red-900 focus:outline-none disabled:opacity-50"
                       placeholder="Your message here..."
                     />
                   </div>
                   <div className="flex gap-4">
                     <button
                       type="submit"
-                      className="bg-red-900 hover:bg-red-800 text-white px-6 py-2 rounded font-semibold transition"
+                      disabled={isLoading}
+                      className="bg-red-900 hover:bg-red-800 text-white px-6 py-2 rounded font-semibold transition disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      Send Message
+                      {isLoading ? "Sending..." : "Send Message"}
                     </button>
                     <button
                       type="button"
                       onClick={() => setShowContactForm(false)}
-                      className="border-2 border-gray-700 text-gray-300 hover:border-gray-500 px-6 py-2 rounded font-semibold transition"
+                      disabled={isLoading}
+                      className="border-2 border-gray-700 text-gray-300 hover:border-gray-500 px-6 py-2 rounded font-semibold transition disabled:opacity-50"
                     >
                       Cancel
                     </button>
