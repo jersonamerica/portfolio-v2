@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { useAnimateOnView } from "@/hooks/useAnimateOnView";
 
 export default function ProfileSection() {
   const [showContactForm, setShowContactForm] = useState(false);
@@ -40,10 +41,13 @@ export default function ProfileSection() {
     }));
   };
 
+  const { ref, isVisible } = useAnimateOnView();
+
   return (
     <section
       id="profile"
-      className="bg-gradient-to-r from-black to-gray-800 text-white py-20"
+      ref={ref}
+      className={`bg-gradient-to-r from-black to-gray-800 text-white py-20 ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}
     >
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">

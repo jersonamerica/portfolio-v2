@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { useAnimateOnView } from "@/hooks/useAnimateOnView";
 
 const projects = [
   {
@@ -50,6 +51,8 @@ const projects = [
 ];
 
 export default function ProjectsSection() {
+  const { ref, isVisible } = useAnimateOnView();
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextSlide = () => {
@@ -63,7 +66,11 @@ export default function ProjectsSection() {
   };
 
   return (
-    <section id="projects" className="py-20 bg-white">
+    <section
+      id="projects"
+      ref={ref}
+      className={`py-20 bg-white ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}
+    >
       <div className="max-w-6xl mx-auto px-6">
         <h2
           className="text-4xl font-bold text-black mb-12 text-center"
@@ -95,6 +102,7 @@ export default function ProjectsSection() {
                           src={project.image}
                           alt={project.title}
                           fill
+                          sizes="100"
                           className="object-cover"
                         />
                       ) : (

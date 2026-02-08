@@ -1,4 +1,9 @@
+"use client";
+
+import { useAnimateOnView } from "@/hooks/useAnimateOnView";
+
 export default function ExperienceSection() {
+  const { ref, isVisible } = useAnimateOnView();
   const experiences = [
     {
       company: "Extreme Unreal Technology Inc.",
@@ -38,7 +43,11 @@ export default function ExperienceSection() {
   ];
 
   return (
-    <section id="experience" className="py-20 bg-gray-50">
+    <section
+      id="experience"
+      ref={ref}
+      className={`py-20 bg-gray-50 ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}
+    >
       <div className="max-w-6xl mx-auto px-6">
         <h2
           className="text-4xl font-bold text-black mb-12 text-center"

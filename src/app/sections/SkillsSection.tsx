@@ -1,11 +1,15 @@
+"use client";
+
+import { useAnimateOnView } from "@/hooks/useAnimateOnView";
+
 export default function SkillsSection() {
+  const { ref, isVisible } = useAnimateOnView();
   const skillCategories = [
     {
       title: "Frontend",
       skills: [
         "HTML",
         "CSS",
-        "PHP",
         "Java",
         "Javascript",
         "jQuery",
@@ -21,7 +25,16 @@ export default function SkillsSection() {
     },
     {
       title: "Backend",
-      skills: ["Node.js", "Express", "C#", "MySQL", "MSSQL", "DB2", "MongoDB"],
+      skills: [
+        "Node.js",
+        "Express",
+        "C#",
+        "MySQL",
+        "MSSQL",
+        "DB2",
+        "MongoDB",
+        "PHP",
+      ],
       badgeColor: "bg-green-50 text-green-900",
     },
     {
@@ -48,7 +61,8 @@ export default function SkillsSection() {
   return (
     <section
       id="skills"
-      className="py-20 bg-gradient-to-br from-gray-50 to-gray-100"
+      ref={ref}
+      className={`py-20 bg-gradient-to-br from-gray-50 to-gray-100 ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}
     >
       <div className="max-w-6xl mx-auto px-6">
         <h2
