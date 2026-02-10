@@ -5,6 +5,7 @@ export const useAnimateOnView = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    const current = ref.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !isVisible) {
@@ -15,16 +16,16 @@ export const useAnimateOnView = () => {
       },
       {
         threshold: 0.1,
-      }
+      },
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    if (current) {
+      observer.observe(current);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (current) {
+        observer.unobserve(current);
       }
     };
   }, [isVisible]);

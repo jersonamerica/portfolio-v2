@@ -46,7 +46,8 @@ export default function ProfileSection() {
       if (response.ok) {
         setSubmitStatus({
           type: "success",
-          message: "Thank you! Your message has been sent successfully. I'll get back to you soon!",
+          message:
+            "Thank you! Your message has been sent successfully. I'll get back to you soon!",
         });
         setFormData({ name: "", email: "", message: "" });
         setTimeout(() => {
