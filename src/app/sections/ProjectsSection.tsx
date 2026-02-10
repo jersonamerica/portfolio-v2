@@ -12,7 +12,7 @@ const projects = [
     tags: ["React", "Redux", "Node.js", "Ant Design"],
     gradient: "from-black to-red-900",
     url: "https://cryptojers.netlify.app/",
-    image: "/cryptojers.PNG",
+    image: "/cryptojers.jpg",
   },
   {
     title: "CMS Blog Platform",
@@ -21,7 +21,7 @@ const projects = [
     tags: ["React", "TypeScript", "NextJS", "TailwindCSS", "GraphQL"],
     gradient: "from-red-900 to-black",
     url: "https://cmsblog.vercel.app/",
-    image: "/graphcms.PNG",
+    image: "/graphcms.jpg",
   },
   {
     title: "OPEN AI Chat App",
@@ -37,7 +37,7 @@ const projects = [
     ],
     gradient: "from-red-900 to-black",
     url: "https://open-ai-chat-app-dun.vercel.app/",
-    image: "/OpenAI.PNG",
+    image: "/OpenAI.jpg",
   },
   {
     title: "Covid19 Tracker",
@@ -95,7 +95,7 @@ export default function ProjectsSection() {
                       transformOrigin: "center",
                     }}
                   >
-                    <div className="h-64 bg-gradient-to-r from-black to-red-900 relative overflow-hidden shadow-lg">
+                    <div className="h-128 bg-gradient-to-r from-black to-red-900 relative overflow-hidden shadow-lg">
                       {project.image ? (
                         <Image
                           src={project.image}
@@ -150,13 +150,13 @@ export default function ProjectsSection() {
           {/* Navigation Buttons */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-black text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-red-900 transition cursor-pointer"
+            className="absolute left-0 top-64 -translate-y-1/2 -translate-x-4 bg-black text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-red-900 transition cursor-pointer"
           >
             ←
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-black text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-red-900 transition cursor-pointer"
+            className="absolute right-0 top-64 -translate-y-1/2 translate-x-4 bg-black text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-red-900 transition cursor-pointer"
           >
             →
           </button>
