@@ -43,7 +43,7 @@ const projects = [
     title: "Covid19 Tracker",
     description:
       "A real-time tracking application for monitoring global and local COVID-19 statistics. Features include up-to-date case numbers, recoveries, and fatalities presented in an easy-to-understand format. Interactive charts and maps help visualize the spread of the virus, making it a valuable tool for staying informed during the pandemic.",
-    tags: ["React", "Redux", "Typescript", "Material UI"],
+    tags: ["React", "Vite", "Typescript", "Recharts", "Material UI"],
     gradient: "from-black via-red-900 to-black",
     url: "https://covid19-virus-tracker-v2.netlify.app/",
     image: "/covid19tracker.PNG",
