@@ -6,13 +6,29 @@ import { useAnimateOnView } from "@/hooks/useAnimateOnView";
 
 const projects = [
   {
+    title: "MMO Equipment Manager",
+    description:
+      "A comprehensive equipment management system for MMO games that allows players to track their gear. Features include inventory management, stat tracking, and a user-friendly interface for organizing and comparing equipment sets.",
+    tags: [
+      "React",
+      "NextJS",
+      "Node.js",
+      "TailwindCSS",
+      "React Query",
+      "MongoDB",
+    ],
+    gradient: "from-black to-red-900",
+    url: "https://l9-hotdogzz.xyz/",
+    image: "/projects/mmo-equipment-manager.jpg",
+  },
+  {
     title: "Cryptojers",
     description:
       "A comprehensive cryptocurrency tracking platform featuring a complete list of cryptocurrencies with detailed information for each asset. Access real-time news updates, monitor price changes with interactive graphs that track performance over time, and stay informed about market trends.",
     tags: ["React", "Redux", "Node.js", "Ant Design"],
     gradient: "from-black to-red-900",
     url: "https://cryptojers.netlify.app/",
-    image: "/cryptojers.jpg",
+    image: "/projects/cryptojers.jpg",
   },
   {
     title: "CMS Blog Platform",
@@ -21,7 +37,7 @@ const projects = [
     tags: ["React", "TypeScript", "NextJS", "TailwindCSS", "GraphQL"],
     gradient: "from-red-900 to-black",
     url: "https://cmsblog.vercel.app/",
-    image: "/graphcms.jpg",
+    image: "/projects/graphcms.jpg",
   },
   {
     title: "OPEN AI Chat App",
@@ -37,7 +53,7 @@ const projects = [
     ],
     gradient: "from-red-900 to-black",
     url: "https://open-ai-chat-app-dun.vercel.app/",
-    image: "/OpenAI.jpg",
+    image: "/projects/OpenAI.jpg",
   },
   {
     title: "Covid19 Tracker",
@@ -46,7 +62,7 @@ const projects = [
     tags: ["React", "Vite", "Typescript", "Recharts", "Material UI"],
     gradient: "from-black via-red-900 to-black",
     url: "https://covid19-virus-tracker-v2.netlify.app/",
-    image: "/covid19tracker.PNG",
+    image: "/projects/covid19tracker.PNG",
   },
 ];
 
