@@ -20,7 +20,7 @@ export default function ProfileSection() {
   const handleDownloadCV = () => {
     // Download the Resume.pdf from the public folder
     const link = document.createElement("a");
-    link.href = "/Resume.pdf";
+    link.href = "/Resume - Jers.pdf";
     link.download = "Jerson_America_Resume.pdf";
     document.body.appendChild(link);
     link.click();

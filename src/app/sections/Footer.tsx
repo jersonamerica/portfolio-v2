@@ -8,7 +8,12 @@ export default function Footer() {
           © 2026 Jerson America. All rights reserved.
         </p>
         <div className="flex justify-center gap-6 mt-4">
-          <a href="#" className="text-gray-400 hover:text-red-900 transition">
+          <a
+            href="https://www.linkedin.com/in/jerson-america-544a733a8/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-400 hover:text-red-900 transition"
+          >
             LinkedIn
           </a>
           <a
